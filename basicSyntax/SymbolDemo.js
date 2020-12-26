@@ -31,3 +31,27 @@ console.log(fooGlobalSymbol == otherFooGlobalSymbol); // true
 //即使采用相同的符号描述，在全局注册表中定义的符号跟使用Symbol()定义的符号也并不等同：
 console.log(fooSymbol == fooGlobalSymbol); // false
 //查询全局注册表中是否有此符号的实例
+
+/**
+ * 使用符号作为属性
+ * 具有隐藏性，for···in，object.keys() 不能访问
+ *
+ */
+console.log('*******************使用符号作为属性***********************');
+let s1 = Symbol('foo'),
+    s2 = Symbol('bar'),
+    s3 = Symbol('baz'),
+    s4 = Symbol('qux');
+
+let o = {
+    [s1]: 'foo val',
+    name:'张三'
+};
+// 这样也可以：o[s1] = 'foo val';
+console.log(o);//{ name: '张三', [Symbol(foo)]: 'foo val' }
+for (let oKey in o) {
+    console.log(oKey);//name
+    console.log(o[oKey]);//张三
+}
+
+

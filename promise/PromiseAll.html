@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    /**
+     * 有两个网络请求，当两个网络请求都完成后才能进行下一步
+     */
+
+    Promise.all([
+        new Promise((resolve, reject) => {
+            setTimeout(() => {
+                resolve({name: '张三', age: 20});
+            }, 1000)
+        }),
+        new Promise((resolve, reject) => {
+            setTimeout(() => {
+                resolve({name: '李四', age: 20});
+            }, 2000)
+        })
+    ]).then(res => {//res是个数组，对应all里面的数组的结果
+        console.log(res);
+    })
+</script>
+</body>
+</html>

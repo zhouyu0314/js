@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    // setTimeout(()=>{
+    //     console.log('hello world!');
+    // },1000)
+
+    //Promise 是一个类 参数 -> 函数(resolve, reject)
+    //resolve, reject 本身他们又是函数
+
+    /*
+    * new -> 构造函数(1.保存一些状态信息 2.执行传入的函数)
+    * 在执行传入的回调函数时，会传入两个参数，resolve, reject 本身又是函数
+    */
+    new Promise((resolve, reject) => {
+        setTimeout(() => {
+            resolve('Hello World!');//成功 调用resolve函数就会调用then函数
+            reject('error message');
+        }, 1000)
+    }).then(data => {
+        console.log(data);
+    }).catch(error => {
+        console.log(error);
+    })
+
+    //另外一种写法
+    new Promise((resolve, reject) => {
+        setTimeout(() => {
+            resolve('Hello World!');
+            reject('error message');
+        }, 1000)
+    }).then(res =>{//then传入两个函数 第一个是成功回调，第二个是失败回调
+        console.log(res);
+    },error=>{
+        console.log(error);
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="box"></div>
+
+
+
+<div id="red" style="border: solid 1px red">
+    <h1>红盒子</h1>
+</div>
+<div id="blue" style="border: solid 1px blue">蓝盒子</div>
+<button id="ok">移动</button>
+<script>
+    var p = document.createElement("p");  //创建段落节点
+    var txt = document.createTextNode("盒模型");  //创建文本节点，文本内容为“盒模型”
+    p.appendChild(txt);  //把文本节点增加到段落节点中  <p>盒模型</p>
+    document.getElementById("box").appendChild(p);  //获取box元素，把段落节点增加尽量 <div id="box"><p>盒模型</p></div>
+
+
+    var ok = document.getElementById("ok");  //获取按钮元素的引用
+    ok.onclick = function () {  //为按钮注册一个鼠标单击事件的处理函数
+        var red = document.getElementById("red");  //获取红色盒子的引用
+        var blue= document.getElementById("blue");  //获取蓝色盒子的引用
+        blue.appendChild(red);  //最后移动红色盒子到蓝色盒子中
+    }
+
+</script>
+</body>
+</html>
